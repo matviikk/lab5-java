@@ -1,12 +1,20 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LabWork implements Comparable<LabWork>{
+public class LabWork implements Comparable<LabWork>, Serializable {
     private static Integer generatedId = 0;
 
-    public LabWork() {
+    public LabWork(String name, Coordinates coordinates, LocalDate creationDate, Double minimalPoint, int averagePoint, Difficulty difficulty, Person author) {
         this.id = generatedId++;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.minimalPoint = minimalPoint;
+        this.averagePoint = averagePoint;
+        this.difficulty = difficulty;
+        this.author = author;
     }
 
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически

@@ -1,6 +1,8 @@
 package model;
 
-public enum Difficulty {
+import java.io.Serializable;
+
+public enum Difficulty implements Serializable {
     HARD,
     IMPOSSIBLE,
     INSANE;
