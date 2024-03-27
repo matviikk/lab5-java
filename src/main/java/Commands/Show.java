@@ -11,7 +11,9 @@ public class Show implements Command {
         this.treeSet = treeSet;
     }
     public void show(){
-        System.out.println(treeSet);
+        for (LabWork lb: treeSet) {
+            System.out.println(lb);
+        }
     }
     @Override
     public void execute() {

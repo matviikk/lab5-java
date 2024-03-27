@@ -1,10 +1,30 @@
 package model;
 
+import jakarta.validation.constraints.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class LabWork implements Comparable<LabWork>, Serializable {
-    private static Integer generatedId = 0;
+    private static Integer generatedId = 1;
+
+    @Override
+    public String toString() {
+        return "LabWork{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", minimalPoint=" + minimalPoint +
+                ", averagePoint=" + averagePoint +
+                ", difficulty=" + difficulty +
+                ", author=" + author +
+                '}';
+    }
+
+    public LabWork() {
+        this.id = generatedId++;
+    }
 
     public LabWork(String name, Coordinates coordinates, LocalDate creationDate, Double minimalPoint, int averagePoint, Difficulty difficulty, Person author) {
         this.id = generatedId++;
@@ -17,21 +37,25 @@ public class LabWork implements Comparable<LabWork>, Serializable {
         this.author = author;
     }
 
+    @NotNull
+    @DecimalMin(inclusive = false, value = "0")
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    @NotNull
+    @NotEmpty
     private String name; //Поле не может быть null, Строка не может быть пустой
+    @NotNull
     private Coordinates coordinates; //Поле не может быть null
+    @NotNull
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @NotNull
+    @DecimalMin(inclusive = false, value = "0.0")
     private Double minimalPoint; //Поле может быть null, Значение поля должно быть больше 0
+    @DecimalMin(inclusive = false, value = "0", message = "Значение средней оценки должно быть больше 0")
     private int averagePoint; //Значение поля должно быть больше 0
+    @NotNull
     private Difficulty difficulty; //Поле может быть null
+    @NotNull
     private Person author; //Поле может быть null
-
-    @Override
-    public String toString() {
-        return "LabWork{" +
-                "id=" + id +
-                '}';
-    }
 
     public static Integer getGeneratedId() {
         return generatedId;
