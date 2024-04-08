@@ -1,8 +1,6 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -43,25 +41,22 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
         this.author = author;
     }
 
-    @NotNull
-    @DecimalMin(inclusive = false, value = "0")
+
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    @NotNull
-    @NotEmpty
+
     private String name; //Поле не может быть null, Строка не может быть пустой
-    @NotNull
+
     private Coordinates coordinates; //Поле не может быть null
-    @NotNull
+
     @JsonFormat(pattern = "yyyy-MM-dd")
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    @NotNull
-    @DecimalMin(inclusive = false, value = "0.0")
+
     private Double minimalPoint; //Поле может быть null, Значение поля должно быть больше 0
-    @DecimalMin(inclusive = false, value = "0", message = "Значение средней оценки должно быть больше 0")
+
     private int averagePoint; //Значение поля должно быть больше 0
-    @NotNull
+
     private Difficulty difficulty; //Поле может быть null
-    @NotNull
+
     private Person author; //Поле может быть null
 
     public static Integer getGeneratedId() {

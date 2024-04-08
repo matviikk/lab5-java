@@ -33,14 +33,14 @@ public class Parser {
             System.out.print("Введите название лабораторной работы: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Название не должно быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Название не должно быть null. \u001B[0m");
                 continue;
             }
             try {
                 String name = s.trim();
                 return name;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -49,18 +49,18 @@ public class Parser {
             System.out.print("Введите минимальную оценку: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Минимальная оценка не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Минимальная оценка не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 Double minimalPoint = Double.parseDouble(s);
                 if (minimalPoint <= 0){
-                    System.out.println("\u001B[31mError: Минимальная оценка должна быть больше 0 \u001B[0m");
+                    System.out.println("\u001B[31mError: Минимальная оценка должна быть больше 0. \u001B[0m");
                     continue;
                 }
                 return minimalPoint;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -71,12 +71,12 @@ public class Parser {
             try {
                 int averagePoint = Integer.parseInt(s);
                 if (averagePoint <= 0){
-                    System.out.println("\u001B[31mError: Среденяя оценка должна быть больше 0 \u001B[0m");
+                    System.out.println("\u001B[31mError: Среденяя оценка должна быть больше 0. \u001B[0m");
                     continue;
                 }
                 return averagePoint;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -94,30 +94,30 @@ public class Parser {
             System.out.print("Введите имя автора: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Имя не должно быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Имя не должно быть null. \u001B[0m");
                 continue;
             }
             try {
                 String name = s.trim();
                 return name;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
     public LocalDateTime scanPersonBirthday(){
         while (true){
-            System.out.print("Введите дату рождения: ");
+            System.out.print("Введите дату рождения: [year month day] ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Дата рождения не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Дата рождения не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 LocalDateTime birthday = LocalDateTime.of(LocalDate.of(Integer.parseInt(s.split(" ")[0]),Integer.parseInt(s.split(" ")[1]), Integer.parseInt(s.split(" ")[2])), LocalTime.MIN);
                 return birthday;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -131,12 +131,12 @@ public class Parser {
             try {
                 int height = Integer.parseInt(s);
                 if (height <= 0){
-                    System.out.println("\u001B[31mError: Рост должен быть больше 0 \u001B[0m");
+                    System.out.println("\u001B[31mError: Рост должен быть больше 0. \u001B[0m");
                     continue;
                 }
                 return height;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -154,14 +154,14 @@ public class Parser {
             System.out.print("Введите X: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Координата X не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Координата X не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 Double x = Double.parseDouble(s);
                 return x;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -170,14 +170,14 @@ public class Parser {
             System.out.print("Введите Y: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Координата Y не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Координата Y не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 long y = Long.parseLong(s);
                 return y;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -186,14 +186,14 @@ public class Parser {
             System.out.print("Введите Z: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Координата Z не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Координата Z не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 double z = Double.parseDouble(s);
                 return z;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -202,14 +202,14 @@ public class Parser {
             System.out.print("Введите название места рождения: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Название не должно быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Название не должно быть null. \u001B[0m");
                 continue;
             }
             try {
                 String name = s.trim();
                 return name;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -225,14 +225,14 @@ public class Parser {
             System.out.print("Введите X: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Координата X не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Координата X не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 Double x = Double.parseDouble(s);
                 return x;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -241,18 +241,18 @@ public class Parser {
             System.out.print("Введите Y: ");
             String s = scanner.nextLine();
             if (s.isEmpty()){
-                System.out.println("\u001B[31mError: Координата Y не должна быть null \u001B[0m");
+                System.out.println("\u001B[31mError: Координата Y не должна быть null. \u001B[0m");
                 continue;
             }
             try {
                 Double y = Double.parseDouble(s);
                 if (y <= -500){
-                    System.out.println("\u001B[31mError: Координата Y должна быть больше -500 \u001B[0m");
+                    System.out.println("\u001B[31mError: Координата Y должна быть больше -500. \u001B[0m");
                     continue;
                 }
                 return y;
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Неверный формат данных \u001B[0m");
+                System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
             }
         }
     }
@@ -260,10 +260,15 @@ public class Parser {
         Difficulty difficulty;
         do {
             System.out.print("Введите сложность: ");
-            for (Difficulty dif: Difficulty.values()){
-                System.out.print(dif + " ");
+            System.out.print("[");
+            Difficulty[] values = Difficulty.values();
+            for (int i = 0; i < values.length; i++) {
+                System.out.print(values[i]);
+                if (i < values.length - 1) {
+                    System.out.print(" "); // Добавляем пробел между элементами, кроме после последнего
+                }
             }
-            System.out.println();
+            System.out.print("] ");
             difficulty = Difficulty.findByValue(scanner.nextLine().trim());
             if (difficulty == null){
                 System.out.println("\u001B[31mError: Такой сложности нету \u001B[0m");

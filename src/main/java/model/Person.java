@@ -1,24 +1,18 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Person implements Serializable, Validatable {
-    @NotNull
-    @NotEmpty
+
     private String name; //Поле не может быть null, Строка не может быть пустой
-    @NotNull
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private java.time.LocalDateTime birthday; //Поле не может быть null
-    @NotNull
-    @DecimalMin(inclusive = false, value = "0")
+
     private Integer height; //Поле может быть null, Значение поля должно быть больше 0
-    @NotNull
+
     private Location location; //Поле не может быть null
 
     public Person() {

@@ -1,16 +1,14 @@
 package model;
 
-import jakarta.validation.constraints.NotNull;
-
 import java.io.Serializable;
 
 public class Location implements Serializable, Validatable {
-    @NotNull
+
     private Double x; //Поле не может быть null
-    @NotNull
+
     private Long y; //Поле не может быть null
     private double z;
-    @NotNull
+
     private String name; //Поле не может быть null
 
     public Location() {

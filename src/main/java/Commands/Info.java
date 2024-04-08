@@ -15,6 +15,6 @@ public class Info implements Command {
 
     @Override
     public void execute(String... args) {
-        System.out.println("date: " + date + " size: " + treeSet.size());
+        System.out.println("date: " + date + " | collection size: " + treeSet.size());
     }
 }

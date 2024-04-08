@@ -22,19 +22,20 @@ public class Main {
         map.put("add", new Add(scanner, treeSet));
         map.put("update", new Update(scanner, treeSet));
         map.put("remove_by_id", new RemoveById(scanner, treeSet));
-        map.put("clear", new Clear(treeSet));
+        map.put("clear", new Clear(treeSet)); // не работает
         map.put("save", new Save(treeSet, path));
         map.put("exit", new Exit());
-        map.put("remove_greater", new RemoveGreater(scanner, treeSet));
-        map.put("remove_lower", new RemoveLower(scanner, treeSet));
+        map.put("remove_greater", new RemoveGreater(scanner, treeSet)); // работает неправильно
+        map.put("remove_lower", new RemoveLower(scanner, treeSet)); // работает неправильно
         map.put("history", new History());
         map.put("remove_any_by_difficulty", new RemoveAnyByDifficulty(scanner, treeSet));
         map.put("average_of_average_point", new AverageOfAveragePoint(treeSet));
         map.put("print_descending", new PrintDescending(treeSet));
-        map.put("execute_script", new ExecuteScript(scanner));
+        map.put("execute_script", new ExecuteScript(scanner)); // сделать
     }
     public static void main(String[] args) throws IOException {
         path = args[0];
+        System.out.println("Введите \"help\" для справки по командам.");
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.registerModule(new JavaTimeModule());
         Scanner fileScanner = new Scanner(new File(path));
@@ -56,7 +57,7 @@ public class Main {
                 executeCommand(string);
             } catch (Exception e){
                 System.out.println("\u001B[31mError: Ошибка ввода. \u001B[0m");
-                System.out.println("\u001B[31mError: Экстренное завершение программы \u001B[0m");
+                System.out.println("\u001B[31mError: Экстренное завершение программы... \u001B[0m");
                 return;
             }
         }
@@ -69,13 +70,13 @@ public class Main {
         String[] args = new String[commandArray.length-1];
         System.arraycopy(commandArray, 1, args, 0, args.length);
         if (!map.containsKey(commandName)) {
-            System.out.println("Такой команды не существует");
+            System.out.println("Такой команды не существует.");
             return;
         }
         try {
             map.get(commandName).execute(args);
         } catch (Exception e) {
-            System.out.println("Произошла ошибка при выполнении команды");
+            System.out.println("Произошла ошибка при выполнении команды...");
         }
     }
 }
