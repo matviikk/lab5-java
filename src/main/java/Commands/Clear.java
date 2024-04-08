@@ -2,7 +2,6 @@ package Commands;
 
 import model.LabWork;
 
-import java.util.Scanner;
 import java.util.TreeSet;
 
 public class Clear implements Command {
@@ -15,7 +14,7 @@ public class Clear implements Command {
         treeSet = new TreeSet<>();
     }
     @Override
-    public void execute() {
+    public void execute(String... args) {
         clear();
     }
 }

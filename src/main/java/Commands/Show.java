@@ -16,7 +16,7 @@ public class Show implements Command {
         }
     }
     @Override
-    public void execute() {
+    public void execute(String... args) {
         show();
     }
 }

@@ -1,10 +1,8 @@
 package Commands;
 
-import java.util.Scanner;
-
 public class Help implements Command {
     @Override
-    public void execute() {
+    public void execute(String... args) {
         System.out.println("info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
                 "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
                 "add {element} : добавить новый элемент в коллекцию\n" +

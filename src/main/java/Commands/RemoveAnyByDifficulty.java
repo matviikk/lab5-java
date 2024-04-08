@@ -3,10 +3,8 @@ package Commands;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Difficulty;
 import model.LabWork;
-import org.example.Main;
+import utility.Parser;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -29,8 +27,8 @@ public class RemoveAnyByDifficulty implements Command {
         }
     }
     @Override
-    public void execute() throws JsonProcessingException {
-        Difficulty difficulty = Main.parseDifficulty(scanner);
+    public void execute(String... args) throws JsonProcessingException {
+        Difficulty difficulty = new Parser(scanner).parseDifficulty();
         removeAnyByDifficulty(difficulty);
     }
 }

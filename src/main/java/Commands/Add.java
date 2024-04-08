@@ -1,10 +1,10 @@
 package Commands;
 
 import model.LabWork;
-import org.example.Main;
 
 import java.util.Scanner;
 import java.util.TreeSet;
+import utility.Parser;
 
 public class Add implements Command {
     Scanner scanner;
@@ -18,8 +18,8 @@ public class Add implements Command {
         treeSet.add(labWork);
     }
     @Override
-    public void execute() {
-        LabWork labWork = Main.parseLabWork(scanner);
+    public void execute(String... args) {
+        LabWork labWork = new Parser(scanner).parseLabWork();
         add(labWork);
     }
 }

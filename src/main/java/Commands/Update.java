@@ -1,7 +1,7 @@
 package Commands;
 
 import model.LabWork;
-import org.example.Main;
+import utility.Parser;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -27,9 +27,9 @@ public class Update implements Command {
         treeSet.add(labWork);
     }
     @Override
-    public void execute() {
-        int id = scanner.nextInt();
-        LabWork element = Main.parseLabWork(scanner);
+    public void execute(String... args) {
+        int id = Integer.parseInt(args[0]);
+        LabWork element = new Parser(scanner).parseLabWork();
         update(id, element);
     }
 }

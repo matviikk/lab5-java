@@ -2,7 +2,7 @@ package Commands;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.LabWork;
-import org.example.Main;
+import utility.Parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ public class RemoveLower implements Command {
         }
     }
     @Override
-    public void execute() throws JsonProcessingException {
-        LabWork labWork = Main.parseLabWork(scanner);
+    public void execute(String... args) throws JsonProcessingException {
+        LabWork labWork = new Parser(scanner).parseLabWork();
         removeLower(labWork);
     }
 }

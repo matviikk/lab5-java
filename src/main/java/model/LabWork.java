@@ -1,11 +1,12 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LabWork implements Comparable<LabWork>, Serializable {
+public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     private static Integer generatedId = 1;
 
     @Override
@@ -24,6 +25,11 @@ public class LabWork implements Comparable<LabWork>, Serializable {
 
     public LabWork() {
         this.id = generatedId++;
+        this.name = "empty";
+        this.coordinates = new Coordinates();
+        this.creationDate = LocalDate.now();
+        this.minimalPoint = 1.0;
+        this.averagePoint = 1;
     }
 
     public LabWork(String name, Coordinates coordinates, LocalDate creationDate, Double minimalPoint, int averagePoint, Difficulty difficulty, Person author) {
@@ -46,6 +52,7 @@ public class LabWork implements Comparable<LabWork>, Serializable {
     @NotNull
     private Coordinates coordinates; //Поле не может быть null
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     @NotNull
     @DecimalMin(inclusive = false, value = "0.0")
@@ -132,5 +139,34 @@ public class LabWork implements Comparable<LabWork>, Serializable {
     @Override
     public int compareTo(LabWork o) {
         return Integer.compare(this.id, o.id);
+    }
+
+    @Override
+    public boolean validate() {
+        if (id == null || id <= 0){
+            System.out.println("\u001B[31mError: Айди не должно быть null и должно быть больше 0 \u001B[0m");
+            return false;
+        }
+        if (name == null || name.isEmpty()){
+            System.out.println("\u001B[31mError: Название не должно быть null и не должно быть пустым \u001B[0m");
+            return false;
+        }
+        if (coordinates == null){
+            System.out.println("\u001B[31mError: Координаты не должны быть null \u001B[0m");
+            return false;
+        }
+        if (creationDate == null){
+            System.out.println("\u001B[31mError: Дата создания не должна быть null \u001B[0m");
+            return false;
+        }
+        if (minimalPoint == null || minimalPoint <= 0){
+            System.out.println("\u001B[31mError: Минимальная оценка не должна быть null и должна быть больше 0 \u001B[0m");
+            return false;
+        }
+        if (averagePoint <= 0){
+            System.out.println("\u001B[31mError: Средняя оценка должна быть больше 0 \u001B[0m");
+            return false;
+        }
+        return true;
     }
 }

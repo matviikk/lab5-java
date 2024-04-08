@@ -15,8 +15,8 @@ public class ExecuteScript implements Command {
     }
 
     @Override
-    public void execute() throws JsonProcessingException, FileNotFoundException {
-        String filepath = scanner.next();
+    public void execute(String... args) throws JsonProcessingException, FileNotFoundException {
+        String filepath = args[0];
         Scanner fileScanner = new Scanner(new File(filepath));
         while (fileScanner.hasNext()) {
             Main.executeCommand(fileScanner.next());

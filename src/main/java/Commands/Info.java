@@ -3,7 +3,6 @@ package Commands;
 import model.LabWork;
 
 import java.util.Date;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Info implements Command {
@@ -15,7 +14,7 @@ public class Info implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String... args) {
         System.out.println("date: " + date + " size: " + treeSet.size());
     }
 }

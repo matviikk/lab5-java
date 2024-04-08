@@ -30,7 +30,7 @@ public class Save implements Command {
     }
 
     @Override
-    public void execute() throws JsonProcessingException {
+    public void execute(String... args) throws JsonProcessingException {
         save();
     }
 }

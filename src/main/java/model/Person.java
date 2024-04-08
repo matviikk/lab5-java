@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -7,11 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Person implements Serializable {
+public class Person implements Serializable, Validatable {
     @NotNull
     @NotEmpty
     private String name; //Поле не может быть null, Строка не может быть пустой
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private java.time.LocalDateTime birthday; //Поле не может быть null
     @NotNull
     @DecimalMin(inclusive = false, value = "0")
@@ -19,14 +21,18 @@ public class Person implements Serializable {
     @NotNull
     private Location location; //Поле не может быть null
 
+    public Person() {
+        this.name = "empty";
+        this.birthday = LocalDateTime.now();
+        this.height = 1;
+        this.location = new Location(0.0, 0L, 0, "empty");
+    }
+
     public Person(String name, LocalDateTime birthday, Integer height, Location location) {
         this.name = name;
         this.birthday = birthday;
         this.height = height;
         this.location = location;
-    }
-
-    public Person() {
     }
 
     public String getName() {
@@ -59,5 +65,26 @@ public class Person implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public boolean validate() {
+        if (name == null || name.isEmpty()){
+            System.out.println("\u001B[31mError: Имя не должно быть null и не должно быть пустым \u001B[0m");
+            return false;
+        }
+        if (birthday == null){
+            //System.out.println("\u001B[31mError: День роджения не должно быть null \u001B[0m");
+            return false;
+        }
+        if (height == null || height <= 0){
+            System.out.println("\u001B[31mError: Рост не должен быть null и должен быть больше 0 \u001B[0m");
+            return false;
+        }
+        if (location == null){
+            System.out.println("\u001B[31mError: Место рождения не должно быть null \u001B[0m");
+            return false;
+        }
+        return true;
     }
 }

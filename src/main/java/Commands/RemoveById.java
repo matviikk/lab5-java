@@ -25,8 +25,8 @@ public class RemoveById implements Command {
     }
 
     @Override
-    public void execute() {
-        int id = scanner.nextInt();
+    public void execute(String... args) {
+        int id = Integer.parseInt(args[0]);
         removeById(id);
     }
 }

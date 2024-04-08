@@ -3,7 +3,6 @@ package Commands;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.LabWork;
 
-import java.util.Scanner;
 import java.util.TreeSet;
 
 public class AverageOfAveragePoint implements Command {
@@ -19,7 +18,7 @@ public class AverageOfAveragePoint implements Command {
         System.out.println(sum / treeSet.size());
     }
     @Override
-    public void execute() throws JsonProcessingException {
+    public void execute(String... args) throws JsonProcessingException {
         averageOfAveragePoint();
     }
 }
