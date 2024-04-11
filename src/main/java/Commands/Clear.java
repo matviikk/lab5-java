@@ -11,7 +11,7 @@ public class Clear implements Command {
         this.treeSet = treeSet;
     }
     public void clear(){
-        treeSet = new TreeSet<>();
+        treeSet.clear();
     }
     @Override
     public void execute(String... args) {

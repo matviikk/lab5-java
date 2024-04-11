@@ -22,7 +22,7 @@ public class Main {
         map.put("add", new Add(scanner, treeSet));
         map.put("update", new Update(scanner, treeSet));
         map.put("remove_by_id", new RemoveById(scanner, treeSet));
-        map.put("clear", new Clear(treeSet)); // не работает
+        map.put("clear", new Clear(treeSet));
         map.put("save", new Save(treeSet, path));
         map.put("exit", new Exit());
         map.put("remove_greater", new RemoveGreater(scanner, treeSet)); // работает неправильно
