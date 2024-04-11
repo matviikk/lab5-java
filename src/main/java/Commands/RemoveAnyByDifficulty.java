@@ -5,14 +5,14 @@ import model.Difficulty;
 import model.LabWork;
 import utility.Parser;
 
-import java.util.Scanner;
+import utility.ScannerManager;
 import java.util.TreeSet;
 
 public class RemoveAnyByDifficulty implements Command {
     TreeSet<LabWork> treeSet;
-    Scanner scanner;
-    public RemoveAnyByDifficulty(Scanner scanner, TreeSet<LabWork> treeSet) {
-        this.scanner = scanner;
+    ScannerManager scannerManager;
+    public RemoveAnyByDifficulty(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
     public void removeAnyByDifficulty(Difficulty difficulty){
@@ -28,7 +28,7 @@ public class RemoveAnyByDifficulty implements Command {
     }
     @Override
     public void execute(String... args) throws JsonProcessingException {
-        Difficulty difficulty = new Parser(scanner).parseDifficulty();
+        Difficulty difficulty = new Parser(scannerManager).parseDifficulty();
         removeAnyByDifficulty(difficulty);
     }
 }

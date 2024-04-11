@@ -6,14 +6,14 @@ import utility.Parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.TreeSet;
+import utility.ScannerManager;
 
 public class RemoveGreater implements Command {
     TreeSet<LabWork> treeSet;
-    Scanner scanner;
-    public RemoveGreater(Scanner scanner, TreeSet<LabWork> treeSet) {
-        this.scanner = scanner;
+    ScannerManager scannerManager;
+    public RemoveGreater(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
     public void removeGreater(LabWork labWork){
@@ -29,7 +29,7 @@ public class RemoveGreater implements Command {
     }
     @Override
     public void execute(String... args) throws JsonProcessingException {
-        LabWork labWork = new Parser(scanner).parseLabWork();
+        LabWork labWork = new Parser(scannerManager).parseLabWork();
         removeGreater(labWork);
     }
 }

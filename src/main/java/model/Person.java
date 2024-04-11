@@ -64,7 +64,7 @@ public class Person implements Serializable, Validatable {
     @Override
     public boolean validate() {
         if (name == null || name.isEmpty()){
-            System.out.println("\u001B[31mError: Имя не должно быть null и не должно быть пустым \u001B[0m");
+            System.out.println("\u001B[31mError: имя не должно быть null и не должно быть пустым \u001B[0m");
             return false;
         }
         if (birthday == null){

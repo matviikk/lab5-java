@@ -133,7 +133,7 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
 
     @Override
     public int compareTo(LabWork o) {
-        return Integer.compare(this.id, o.id);
+        return Integer.compare(this.averagePoint, o.averagePoint);
     }
 
     @Override

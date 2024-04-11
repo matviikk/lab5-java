@@ -4,15 +4,15 @@ import model.LabWork;
 import utility.Parser;
 
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.TreeSet;
+import utility.ScannerManager;
 
 public class Update implements Command {
-    Scanner scanner;
+    ScannerManager scannerManager;
     TreeSet<LabWork> treeSet;
 
-    public Update(Scanner scanner, TreeSet<LabWork> treeSet) {
-        this.scanner = scanner;
+    public Update(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
     public void update(Integer id, LabWork labWork){
@@ -29,7 +29,7 @@ public class Update implements Command {
     @Override
     public void execute(String... args) {
         int id = Integer.parseInt(args[0]);
-        LabWork element = new Parser(scanner).parseLabWork();
+        LabWork element = new Parser(scannerManager).parseLabWork();
         update(id, element);
     }
 }

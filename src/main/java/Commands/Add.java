@@ -5,13 +5,13 @@ import model.LabWork;
 import java.util.Scanner;
 import java.util.TreeSet;
 import utility.Parser;
+import utility.ScannerManager;
 
 public class Add implements Command {
-    Scanner scanner;
+    ScannerManager scannerManager;
     TreeSet<LabWork> treeSet;
-
-    public Add(Scanner scanner, TreeSet<LabWork> treeSet) {
-        this.scanner = scanner;
+    public Add(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
     public void add(LabWork labWork){
@@ -19,7 +19,7 @@ public class Add implements Command {
     }
     @Override
     public void execute(String... args) {
-        LabWork labWork = new Parser(scanner).parseLabWork();
+        LabWork labWork = new Parser(scannerManager).parseLabWork();
         add(labWork);
     }
 }

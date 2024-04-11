@@ -3,15 +3,15 @@ package Commands;
 import model.LabWork;
 
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.TreeSet;
+import utility.ScannerManager;
 
 public class RemoveById implements Command {
-    Scanner scanner;
+    ScannerManager scannerManager;
     TreeSet<LabWork> treeSet;
 
-    public RemoveById(Scanner scanner, TreeSet<LabWork> treeSet) {
-        this.scanner = scanner;
+    public RemoveById(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
     public void removeById(Integer id){
