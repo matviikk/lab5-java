@@ -1,5 +1,7 @@
 package utility;
 
+import org.example.Main;
+
 import java.util.Scanner;
 /**
  * Управляет вводом данных, обеспечивая переключение между стандартным вводом и вводом из файла.
@@ -12,12 +14,19 @@ public class ScannerManager {
      * Читает следующую строку ввода, выбирая источник в зависимости от текущего режима (файл или стандартный ввод).
      * @return Возвращает следующую строку из соответствующего источника.
      */
+//    public String nextLine() {
+//        if (isReadingFile) {
+//            return fileScanner.nextLine();
+//        } else {
+//            return scanner.nextLine();
+//        }
+//    }
     public String nextLine() {
-        if (isReadingFile) {
-            return fileScanner.nextLine();
-        } else {
-            return scanner.nextLine();
+        if (!scanner.hasNextLine()) {
+            Main.saveAndExit();  // Вызов метода сохранения данных и завершения программы
+            return null; // Возврат null после завершения программы
         }
+        return scanner.nextLine();
     }
     /**
      * Проверяет, есть ли следующая строка для чтения в текущем источнике ввода.
@@ -29,6 +38,16 @@ public class ScannerManager {
         } else {
             return scanner.hasNext();
         }
+    }
+    /**
+     * Проверяет, есть ли следующая строка для чтения.
+     * Этот метод использует встроенный метод `hasNextLine` объекта `Scanner`,
+     * чтобы определить, может ли сканер прочитать следующую строку из входного потока.
+     *
+     * @return true, если в потоке ввода доступна следующая строка, иначе false.
+     */
+    public boolean hasNextLine() {
+        return scanner.hasNextLine();
     }
     /**
      * Получает текущий Scanner, используемый для ввода.

@@ -1,5 +1,6 @@
 package org.example;
 
+import Commands.Save;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import model.*;
@@ -33,6 +34,7 @@ public class Main {
      * Менеджер команд, отвечающий за исполнение доступных команд.
      */
     public static CommandManager commandManager;
+    private static Save saver;
     /**
      * Точка входа в программу. Инициализирует обработку входных данных и управляет основным циклом выполнения команд.
      *
@@ -53,8 +55,12 @@ public class Main {
         }
         LabWork.setGeneratedId(maxId + 1);
         commandManager = new CommandManager(treeSet, scannerManager, path);
+        saver = new Save(treeSet, path);
         while (isRunning) {
             try {
+                if (!scannerManager.hasNextLine()) {
+                    saveAndExit(); // Здесь вызываем сохранение и выход при EOF (Ctrl+D)
+                }
                 String string = scannerManager.nextLine();
                 history.addFirst(string);
                 if (history.size() > 9) {
@@ -67,6 +73,18 @@ public class Main {
                 return;
             }
         }
+    }
+    /**
+     * Выполняет сохранение и выход из программы, при вызове исключения.
+     */
+    public static void saveAndExit() {
+        try {
+            saver.save();
+            System.out.println("Data saved successfully. Exiting program...");
+        } catch (IOException e) {
+            System.err.println("Failed to save data: " + e.getMessage());
+        }
+        System.exit(0);
     }
     /**
      * Выполняет команду, указанную пользователем.
