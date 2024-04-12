@@ -8,14 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 import utility.ScannerManager;
-
+/**
+ * Команда для удаления из коллекции всех элементов, которые превышают заданный элемент.
+ */
 public class RemoveGreater implements Command {
     TreeSet<LabWork> treeSet;
     ScannerManager scannerManager;
+    /**
+     * Конструктор класса RemoveGreater.
+     * @param scannerManager Менеджер сканера, предоставляющий методы для чтения ввода пользователя.
+     * @param treeSet Коллекция лабораторных работ, из которой будут удаляться элементы.
+     */
     public RemoveGreater(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
         this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }
+    /**
+     * Удаляет все элементы коллекции, которые больше заданного элемента.
+     * @param labWork Элемент, с которым сравниваются элементы коллекции.
+     */
     public void removeGreater(LabWork labWork){
         List<LabWork> temp = new ArrayList<>();
         for (LabWork lb: treeSet){
@@ -27,6 +38,11 @@ public class RemoveGreater implements Command {
             treeSet.remove(lb);
         }
     }
+    /**
+     * Выполняет команду удаления всех элементов коллекции, превышающих заданный элемент.
+     * @param args Аргументы команды (не используются).
+     * @throws JsonProcessingException Если происходит ошибка обработки данных при парсинге элемента.
+     */
     @Override
     public void execute(String... args) throws JsonProcessingException {
         LabWork labWork = new Parser(scannerManager).parseLabWork();

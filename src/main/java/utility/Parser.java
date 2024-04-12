@@ -1,21 +1,29 @@
 package utility;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator;
 import model.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
-
+/**
+ * Класс, предназначенный для парсинга данных лабораторных работ и связанных с ними сущностей.
+ * Обеспечивает интерактивный ввод и проверку данных через консоль.
+ */
 public class Parser {
     ScannerManager scannerManager;
-
+    /**
+     * Конструктор класса Parser.
+     *
+     * @param scannerManager Менеджер сканера для обработки ввода.
+     */
     public Parser(ScannerManager scannerManager) {
         this.scannerManager = scannerManager;
     }
-
+    /**
+     * Метод для парсинга объекта LabWork с вводом от пользователя.
+     *
+     * @return Возвращает полностью сформированный объект LabWork.
+     */
     public LabWork parseLabWork(){
         LabWork newLabwork = new LabWork();
         newLabwork.setName(scanLabWorkName());
@@ -27,6 +35,7 @@ public class Parser {
         newLabwork.setAuthor(parsePerson());
         return newLabwork;
     }
+    // Методы для сканирования различных полей лабораторной работы, включая имя, минимальную и среднюю оценку, сложность и автора.
     public String scanLabWorkName(){
         while (true){
             if (!scannerManager.isReadingFile()) System.out.print("Введите название лабораторной работы: ");
@@ -79,6 +88,11 @@ public class Parser {
             }
         }
     }
+    /**
+     * Метод для парсинга объекта Person с вводом от пользователя.
+     *
+     * @return Возвращает полностью сформированный объект Person.
+     */
     public Person parsePerson(){
         Person newPerson = new Person();
         newPerson.setName(scanPersonName());
@@ -88,6 +102,7 @@ public class Parser {
         newPerson.setLocation(location);
         return newPerson;
     }
+    // Методы для сканирования различных полей автора.
     public String scanPersonName(){
         while (true){
             if (!scannerManager.isReadingFile()) System.out.print("Введите имя автора: ");
@@ -139,6 +154,11 @@ public class Parser {
             }
         }
     }
+    /**
+     * Метод для парсинга объекта Location с вводом от пользователя.
+     *
+     * @return Возвращает полностью сформированный объект Location.
+     */
     public Location parseLocation(){
         Location newLocation = new Location();
         if (!scannerManager.isReadingFile()) System.out.print("Введите место рождения: ");
@@ -148,6 +168,7 @@ public class Parser {
         newLocation.setName(scanLocationName());
         return newLocation;
     }
+    // Методы для сканирования различных полей места рождения.
     public Double scanLocationX(){
         while (true){
             if (!scannerManager.isReadingFile()) System.out.print("Введите X: ");
@@ -212,6 +233,11 @@ public class Parser {
             }
         }
     }
+    /**
+     * Метод для парсинга координат из пользовательского ввода.
+     *
+     * @return Возвращает объект Coordinates с заданными пользователем значениями.
+     */
     public Coordinates parseCoordinates(){
         Coordinates newCoordinates = new Coordinates();
         if (!scannerManager.isReadingFile()) System.out.print("Введите координаты: ");
@@ -219,6 +245,7 @@ public class Parser {
         newCoordinates.setY(scanCoordinatesY());
         return newCoordinates;
     }
+    // Дополнительные методы сканирования для различных данных, включая имя, дату рождения, рост и местоположение персоны.
     public Double scanCoordinatesX(){
         while (true){
             if (!scannerManager.isReadingFile()) System.out.print("Введите X: ");
@@ -255,6 +282,11 @@ public class Parser {
             }
         }
     }
+    /**
+     * Метод для парсинга сложности из пользовательского ввода.
+     *
+     * @return Возвращает enum Difficulty согласно вводу пользователя.
+     */
     public Difficulty parseDifficulty() {
         Difficulty difficulty;
         do {

@@ -7,15 +7,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeSet;
-
+/**
+ * Менеджер команд, управляющий выполнением всех доступных команд.
+ * Хранит множество лабораторных работ и обеспечивает управление ими через консоль.
+ */
 public class CommandManager {
     public TreeSet<LabWork> treeSet;
     public ScannerManager scannerManager;
     public Map<String, Command> map = new HashMap<String, Command>();
-
+    /**
+     * Конструктор инициализирует CommandManager с заданным набором работ, сканером и путем для сохранения.
+     *
+     * @param treeSet Набор лабораторных работ.
+     * @param scannerManager Менеджер для обработки пользовательского ввода.
+     * @param path Путь для сохранения данных.
+     */
     public CommandManager(TreeSet<LabWork> treeSet, ScannerManager scannerManager, String path) {
         this.treeSet = treeSet;
         this.scannerManager = scannerManager;
+        // Инициализация команд с их соответствующими обработчиками
         map.put("help", new Help());
         map.put("info", new Info(treeSet));
         map.put("show", new Show(treeSet));
@@ -33,7 +43,11 @@ public class CommandManager {
         map.put("print_descending", new PrintDescending(treeSet));
         map.put("execute_script", new ExecuteScript(scannerManager));
     }
-
+    /**
+     * Возвращает карту всех доступных команд.
+     *
+     * @return Карта команд.
+     */
     public Map<String, Command> getCommands() {
         return map;
     }

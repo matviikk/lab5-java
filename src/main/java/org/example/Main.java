@@ -9,13 +9,36 @@ import utility.ScannerManager;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Основной класс приложения, управляющий загрузкой данных и выполнением команд.
+ */
 public class Main {
+    /**
+     * Набор всех лабораторных работ, упорядоченных по их уникальным идентификаторам.
+     */
     public static TreeSet<LabWork> treeSet = new TreeSet<>();
+    /**
+     * История введенных команд.
+     */
     public static Deque<String> history = new ArrayDeque<>();
+    /**
+     * Менеджер для обработки ввода от пользователя.
+     */
     public static ScannerManager scannerManager = new ScannerManager();
+    /**
+     * Флаг, указывающий на то, продолжается ли выполнение программы.
+     */
     public static boolean isRunning = true;
+    /**
+     * Менеджер команд, отвечающий за исполнение доступных команд.
+     */
     public static CommandManager commandManager;
-
+    /**
+     * Точка входа в программу. Инициализирует обработку входных данных и управляет основным циклом выполнения команд.
+     *
+     * @param args Аргументы командной строки, первый из которых ожидается как путь к файлу данных.
+     * @throws IOException Если происходит ошибка ввода/вывода при работе с файлами.
+     */
     public static void main(String[] args) throws IOException {
         String path = args[0];
         System.out.println("Введите \"help\" для справки по командам.");
@@ -45,8 +68,11 @@ public class Main {
             }
         }
     }
-
-
+    /**
+     * Выполняет команду, указанную пользователем.
+     *
+     * @param string Строка, содержащая команду и её аргументы.
+     */
     public static void executeCommand(String string) {
         String[] commandArray = string.split(" ");
         String commandName = commandArray[0];

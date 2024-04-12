@@ -1,9 +1,18 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import net.bytebuddy.asm.Advice;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
+/**
+ * Класс, представляющий лабораторную работу.
+ * Включает в себя информацию о названии, координатах, дате создания, минимальной и средней оценке,
+ * сложности и авторе работы. ID каждой работы генерируется автоматически и уникален.
+ */
 public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     private static Integer generatedId = 1;
 
@@ -20,7 +29,9 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
                 ", author=" + author +
                 '}';
     }
-
+    /**
+     * Конструктор по умолчанию, инициализирует объект с параметрами по умолчанию.
+     */
     public LabWork() {
         this.id = generatedId++;
         this.name = "empty";
@@ -29,7 +40,9 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
         this.minimalPoint = 1.0;
         this.averagePoint = 1;
     }
-
+    /**
+     * Конструктор с параметрами для инициализации всех полей класса.
+     */
     public LabWork(String name, Coordinates coordinates, LocalDate creationDate, Double minimalPoint, int averagePoint, Difficulty difficulty, Person author) {
         this.id = generatedId++;
         this.name = name;
@@ -58,6 +71,9 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     private Difficulty difficulty; //Поле может быть null
 
     private Person author; //Поле может быть null
+    private Date lastSaveTime;
+
+    // Геттеры и сеттеры для каждого поля класса
 
     public static Integer getGeneratedId() {
         return generatedId;
@@ -130,12 +146,23 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     public void setAuthor(Person author) {
         this.author = author;
     }
+    public Date getLastSaveTime() {
+        return lastSaveTime;
+    }
+    public void setLastSaveTime(Date lastSaveTime) {
+        this.lastSaveTime = lastSaveTime;
+    }
 
+    /**
+     * Метод сравнения для упорядочивания лабораторных работ по средней оценке.
+     */
     @Override
     public int compareTo(LabWork o) {
         return Integer.compare(this.averagePoint, o.averagePoint);
     }
-
+    /**
+     * Метод для проверки корректности значений всех полей класса.
+     */
     @Override
     public boolean validate() {
         if (id == null || id <= 0){
