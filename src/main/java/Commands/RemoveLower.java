@@ -12,15 +12,16 @@ import utility.ScannerManager;
 /**
  * Команда для удаления из коллекции всех элементов, которые меньше заданного элемента.
  */
-public class RemoveLower implements Command {
-    TreeSet<LabWork> treeSet;
-    ScannerManager scannerManager;
+public class RemoveLower extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
+    private final ScannerManager scannerManager;
     /**
      * Конструктор класса RemoveLower.
      * @param scannerManager Менеджер сканера, предоставляющий методы для чтения ввода пользователя.
      * @param treeSet Коллекция лабораторных работ, из которой будут удаляться элементы.
      */
     public RemoveLower(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        super("remove_lower {element}", "удалить из коллекции все элементы, меньшие, чем заданный");
         this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }

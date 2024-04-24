@@ -12,16 +12,17 @@ import java.util.TreeSet;
 /**
  * Команда для сохранения коллекции лабораторных работ в XML-формате в файл.
  */
-public class Save implements Command {
-    TreeSet<LabWork> treeSet;
-    String path;
-    XmlMapper mapper = new XmlMapper();
+public class Save extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
+    private final String path;
+    private final XmlMapper mapper = new XmlMapper();
     /**
      * Конструктор класса Save.
      * @param treeSet Коллекция лабораторных работ для сохранения.
      * @param path Путь к файлу, в который будет производиться сохранение.
      */
     public Save(TreeSet<LabWork> treeSet, String path) {
+        super("save", "сохранить коллекцию в файл");
         this.treeSet = treeSet;
         this.path = path;
         mapper.registerModule(new JavaTimeModule());

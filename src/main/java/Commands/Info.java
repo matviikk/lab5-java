@@ -7,15 +7,16 @@ import java.util.TreeSet;
 /**
  * Команда для вывода информации о коллекции лабораторных работ.
  */
-public class Info implements Command {
-    Date date = new Date();
-    TreeSet<LabWork> treeSet;
+public class Info extends AbstractCommand {
+    private final Date date = new Date();
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор команды Info.
      * @param treeSet Коллекция лабораторных работ, для которой будет выводиться информация.
      */
 
     public Info(TreeSet<LabWork> treeSet) {
+        super("info", "вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)");
         this.treeSet = treeSet;
     }
     /**

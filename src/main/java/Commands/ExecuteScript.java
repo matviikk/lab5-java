@@ -12,14 +12,15 @@ import utility.ScannerManager;
 /**
  * Команда для выполнения набора команд из файла скрипта.
  */
-public class ExecuteScript implements Command {
+public class ExecuteScript extends AbstractCommand {
 
-    ScannerManager scannerManager;
+    private final ScannerManager scannerManager;
     /**
      * Конструктор класса ExecuteScript.
      * @param scannerManager Экземпляр ScannerManager для управления чтением данных.
      */
     public ExecuteScript(ScannerManager scannerManager) {
+        super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.scannerManager = scannerManager;
     }
     /**

@@ -7,13 +7,14 @@ import java.util.TreeSet;
 /**
  * Команда для вычисления среднего значения средних оценок всех лабораторных работ в коллекции.
  */
-public class AverageOfAveragePoint implements Command {
-    TreeSet<LabWork> treeSet;
+public class AverageOfAveragePoint extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса AverageOfAveragePoint.
      * @param treeSet Коллекция лабораторных работ.
      */
     public AverageOfAveragePoint(TreeSet<LabWork> treeSet) {
+        super("average_of_average_point", "вывести среднее значение поля averagePoint для всех элементов коллекции");
         this.treeSet = treeSet;
     }
     /**

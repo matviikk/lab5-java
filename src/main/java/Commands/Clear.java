@@ -6,13 +6,14 @@ import java.util.TreeSet;
 /**
  * Команда для очистки всех лабораторных работ из коллекции.
  */
-public class Clear implements Command {
-    TreeSet<LabWork> treeSet;
+public class Clear extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса Clear.
      * @param treeSet Коллекция лабораторных работ, которая будет очищена.
      */
     public Clear(TreeSet<LabWork> treeSet) {
+        super("clear", "очистить коллекцию");
         this.treeSet = treeSet;
     }
     /**

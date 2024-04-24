@@ -5,7 +5,11 @@ import org.example.Main;
 /**
  * Команда для завершения выполнения программы.
  */
-public class Exit implements Command {
+public class Exit extends AbstractCommand {
+    public Exit() {
+        super("exit", "завершить программу (без сохранения в файл");
+    }
+
     /**
      * Выполняет операцию выхода из программы, устанавливая флаг isRunning в состояние false.
      * @param args Аргументы команды (не используются в этой команде).

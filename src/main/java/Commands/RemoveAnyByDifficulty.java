@@ -10,8 +10,8 @@ import java.util.TreeSet;
 /**
  * Команда для удаления из коллекции одного элемента с заданной сложностью.
  */
-public class RemoveAnyByDifficulty implements Command {
-    TreeSet<LabWork> treeSet;
+public class RemoveAnyByDifficulty extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     ScannerManager scannerManager;
     /**
      * Конструктор класса RemoveAnyByDifficulty.
@@ -19,6 +19,7 @@ public class RemoveAnyByDifficulty implements Command {
      * @param treeSet Коллекция лабораторных работ, из которой будет удаляться элемент.
      */
     public RemoveAnyByDifficulty(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        super("remove_any_by_difficulty difficulty", "удалить из коллекции один элемент, значение поля difficulty которого эквивалентно заданному");
         this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }

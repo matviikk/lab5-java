@@ -8,13 +8,14 @@ import java.util.TreeSet;
 /**
  * Команда для вывода элементов коллекции в порядке убывания.
  */
-public class PrintDescending implements Command {
-    TreeSet<LabWork> treeSet;
+public class PrintDescending extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса PrintDescending.
      * @param treeSet Коллекция лабораторных работ, элементы которой будут выводиться.
      */
     public PrintDescending(TreeSet<LabWork> treeSet) {
+        super("print_descending", "вывести элементы коллекции в порядке убывания");
         this.treeSet = treeSet;
     }
     /**
@@ -26,7 +27,7 @@ public class PrintDescending implements Command {
     }
     /**
      * Рекурсивно выводит элементы коллекции начиная с последнего до первого.
-     * @param iterator Итератор для коллекции лабораторных работ.
+     * @param iterator итератор для коллекции лабораторных работ.
      */
     public void recursion(Iterator<LabWork> iterator) {
         if (iterator.hasNext()) {

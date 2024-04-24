@@ -9,15 +9,16 @@ import utility.ScannerManager;
 /**
  * Команда для обновления элемента коллекции по его ID.
  */
-public class Update implements Command {
-    ScannerManager scannerManager;
-    TreeSet<LabWork> treeSet;
+public class Update extends AbstractCommand {
+    private final ScannerManager scannerManager;
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса Update.
      * @param scannerManager Менеджер сканера, предоставляющий методы для чтения ввода пользователя.
      * @param treeSet Коллекция лабораторных работ, в которой будет обновлен элемент.
      */
     public Update(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        super("update id {element}", "обновить значение элемента коллекции, id которого равен заданному");
         this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }

@@ -8,21 +8,19 @@ import utility.ScannerManager;
 /**
  * Команда для удаления элемента из коллекции по его идентификатору (ID).
  */
-public class RemoveById implements Command {
-    ScannerManager scannerManager;
-    TreeSet<LabWork> treeSet;
+public class RemoveById extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса RemoveById.
-     * @param scannerManager Менеджер сканера для обработки ввода.
      * @param treeSet Коллекция лабораторных работ, из которой будет удален элемент.
      */
-    public RemoveById(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
-        this.scannerManager = scannerManager;
+    public RemoveById(TreeSet<LabWork> treeSet) {
+        super("remove_by_id id", "удалить элемент из коллекции по его id");
         this.treeSet = treeSet;
     }
     /**
      * Удаляет элемент из коллекции по заданному ID.
-     * @param id Идентификатор лабораторной работы, которую нужно удалить.
+     * @param id идентификатор лабораторной работы, которую нужно удалить.
      */
     public void removeById(Integer id){
         LabWork temp = null;

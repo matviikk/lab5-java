@@ -19,7 +19,7 @@ public class Main {
      */
     public static TreeSet<LabWork> treeSet = new TreeSet<>();
     /**
-     * История введенных команд.
+     * история введенных команд.
      */
     public static Deque<String> history = new ArrayDeque<>();
     /**
@@ -36,7 +36,7 @@ public class Main {
     public static CommandManager commandManager;
     private static Save saver;
     /**
-     * Точка входа в программу. Инициализирует обработку входных данных и управляет основным циклом выполнения команд.
+     * Точка входа в программу. инициализирует обработку входных данных и управляет основным циклом выполнения команд.
      *
      * @param args Аргументы командной строки, первый из которых ожидается как путь к файлу данных.
      * @throws IOException Если происходит ошибка ввода/вывода при работе с файлами.

@@ -6,13 +6,14 @@ import java.util.TreeSet;
 /**
  * Команда для вывода всех элементов коллекции в стандартный поток вывода.
  */
-public class Show implements Command {
-    TreeSet<LabWork> treeSet;
+public class Show extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса Show.
      * @param treeSet Коллекция лабораторных работ, элементы которой будут отображаться.
      */
     public Show(TreeSet<LabWork> treeSet) {
+        super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении");
         this.treeSet = treeSet;
     }
     /**

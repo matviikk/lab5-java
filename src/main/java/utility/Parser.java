@@ -10,7 +10,7 @@ import java.util.Set;
  * Обеспечивает интерактивный ввод и проверку данных через консоль.
  */
 public class Parser {
-    ScannerManager scannerManager;
+    private final ScannerManager scannerManager;
     /**
      * Конструктор класса Parser.
      *

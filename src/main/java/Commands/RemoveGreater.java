@@ -11,15 +11,16 @@ import utility.ScannerManager;
 /**
  * Команда для удаления из коллекции всех элементов, которые превышают заданный элемент.
  */
-public class RemoveGreater implements Command {
-    TreeSet<LabWork> treeSet;
-    ScannerManager scannerManager;
+public class RemoveGreater extends AbstractCommand {
+    private final TreeSet<LabWork> treeSet;
+    private final ScannerManager scannerManager;
     /**
      * Конструктор класса RemoveGreater.
      * @param scannerManager Менеджер сканера, предоставляющий методы для чтения ввода пользователя.
      * @param treeSet Коллекция лабораторных работ, из которой будут удаляться элементы.
      */
     public RemoveGreater(ScannerManager scannerManager, TreeSet<LabWork> treeSet) {
+        super("remove_greater {element}", "удалить из коллекции все элементы, превышающие заданный");
         this.scannerManager = scannerManager;
         this.treeSet = treeSet;
     }

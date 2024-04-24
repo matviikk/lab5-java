@@ -1,28 +1,27 @@
 package Commands;
+
+import utility.CommandManager;
+
+import java.util.Map;
+
 /**
  * Команда для отображения справочной информации по доступным командам в приложении.
  */
-public class Help implements Command {
+public class Help extends AbstractCommand {
+    private final CommandManager commandManager;
+    public Help(CommandManager commandManager) {
+        super("help", "вывести справку по доступным командам");
+        this.commandManager = commandManager;
+    }
+
     /**
      * Выводит в стандартный поток вывода список доступных команд с их описанием.
      * @param args Аргументы команды (не используются в этой команде).
      */
     @Override
     public void execute(String... args) {
-        System.out.println("info :                                вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
-                           "show :                                вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
-                           "add {element} :                       добавить новый элемент в коллекцию\n" +
-                           "update id {element} :                 обновить значение элемента коллекции, id которого равен заданному\n" +
-                           "remove_by_id id :                     удалить элемент из коллекции по его id\n" +
-                           "clear :                               очистить коллекцию\n" +
-                           "save :                                сохранить коллекцию в файл\n" +
-                           "execute_script file_name :            считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.\n" +
-                           "exit :                                завершить программу (без сохранения в файл)\n" +
-                           "remove_greater {element} :            удалить из коллекции все элементы, превышающие заданный\n" +
-                           "remove_lower {element} :              удалить из коллекции все элементы, меньшие, чем заданный\n" +
-                           "history :                             вывести последние 9 команд (без их аргументов)\n" +
-                           "remove_any_by_difficulty difficulty : удалить из коллекции один элемент, значение поля difficulty которого эквивалентно заданному\n" +
-                           "average_of_average_point :            вывести среднее значение поля averagePoint для всех элементов коллекции\n" +
-                           "print_descending :                    вывести элементы коллекции в порядке убывания");
+        for (Map.Entry<String, Command> entry: commandManager.getCommands().entrySet()) {
+            System.out.println(entry.getValue().getName() + " : " + entry.getValue().getDescription());
+        }
     }
 }
