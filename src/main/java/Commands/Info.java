@@ -8,7 +8,6 @@ import java.util.TreeSet;
  * Команда для вывода информации о коллекции лабораторных работ.
  */
 public class Info extends AbstractCommand {
-    private final Date date = new Date();
     private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор команды Info.

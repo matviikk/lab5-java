@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.io.FileNotFoundException;
 /**
- * интерфейс для команд, используемых в приложении.
+ * Интерфейс для команд, используемых в приложении.
  * Обеспечивает выполнение действий, основанных на вводе пользователя.
  */
 public interface Command {
