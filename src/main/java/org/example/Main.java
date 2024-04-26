@@ -57,6 +57,7 @@ public class Main {
         commandManager = new CommandManager(treeSet, scannerManager, path);
         saver = new Save(treeSet, path);
         while (isRunning) {
+            System.out.print("$ ");
             try {
                 if (!scannerManager.hasNextLine()) {
                     saveAndExit(); // Здесь вызываем сохранение и выход при EOF (Ctrl+D)

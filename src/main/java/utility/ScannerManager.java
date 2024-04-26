@@ -14,20 +14,20 @@ public class ScannerManager {
      * Читает следующую строку ввода, выбирая источник в зависимости от текущего режима (файл или стандартный ввод).
      * @return Возвращает следующую строку из соответствующего источника.
      */
-//    public String nextLine() {
-//        if (isReadingFile) {
-//            return fileScanner.nextLine();
-//        } else {
-//            return scanner.nextLine();
-//        }
-//    }
     public String nextLine() {
-        if (!scanner.hasNextLine()) {
-            Main.saveAndExit();  // Вызов метода сохранения данных и завершения программы
-            return null; // Возврат null после завершения программы
+        if (isReadingFile) {
+            return fileScanner.nextLine();
+        } else {
+            return scanner.nextLine();
         }
-        return scanner.nextLine();
     }
+//    public String nextLine() {
+//        if (!scanner.hasNextLine()) {
+//            Main.saveAndExit();  // Вызов метода сохранения данных и завершения программы
+//            return null; // Возврат null после завершения программы
+//        }
+//        return scanner.nextLine();
+//    }
     /**
      * Проверяет, есть ли следующая строка для чтения в текущем источнике ввода.
      * @return true, если следующая строка доступна, иначе false.

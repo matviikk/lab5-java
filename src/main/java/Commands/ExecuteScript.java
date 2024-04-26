@@ -13,7 +13,6 @@ import utility.ScannerManager;
  * Команда для выполнения набора команд из файла скрипта.
  */
 public class ExecuteScript extends AbstractCommand {
-
     private final ScannerManager scannerManager;
     /**
      * Конструктор класса ExecuteScript.
