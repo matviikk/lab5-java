@@ -1,7 +1,6 @@
 package Commands;
 
 import model.LabWork;
-
 import java.util.TreeSet;
 /**
  * Команда для очистки всех лабораторных работ из коллекции.
@@ -21,6 +20,7 @@ public class Clear extends AbstractCommand {
      */
     public void clear(){
         treeSet.clear();
+        LabWork.setGeneratedId(0);
     }
     /**
      * Выполняет команду очистки коллекции лабораторных работ.
