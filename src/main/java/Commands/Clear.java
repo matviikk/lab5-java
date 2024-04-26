@@ -20,7 +20,6 @@ public class Clear extends AbstractCommand {
      */
     public void clear(){
         treeSet.clear();
-        LabWork.setGeneratedId(0);
     }
     /**
      * Выполняет команду очистки коллекции лабораторных работ.
