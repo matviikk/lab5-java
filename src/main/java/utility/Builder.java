@@ -4,19 +4,19 @@ import model.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Set;
+
 /**
  * Класс, предназначенный для парсинга данных лабораторных работ и связанных с ними сущностей.
  * Обеспечивает интерактивный ввод и проверку данных через консоль.
  */
-public class Parser {
+public class Builder {
     private final ScannerManager scannerManager;
     /**
      * Конструктор класса Parser.
      *
      * @param scannerManager Менеджер сканера для обработки ввода.
      */
-    public Parser(ScannerManager scannerManager) {
+    public Builder(ScannerManager scannerManager) {
         this.scannerManager = scannerManager;
     }
     /**

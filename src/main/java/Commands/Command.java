@@ -1,20 +1,54 @@
 package Commands;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-
-import java.io.FileNotFoundException;
 /**
- * Интерфейс для команд, используемых в приложении.
- * Обеспечивает выполнение действий, основанных на вводе пользователя.
+ * Command предоставляет базовую реализацию для интерфейса {@link Command},
+ * инкапсулируя общие свойства, такие как имя и описание.
+ * Этот класс служит основой для всех команд в системе.
  */
-public interface Command {
-    public String getName();
-    public String getDescription();
+public abstract class Command {
+    private String name;
+    private String description;
     /**
-     * Выполняет команду с использованием переданных аргументов.
-     * @param args Аргументы, передаваемые команде.
-     * @throws JsonProcessingException Если происходит ошибка при обработке JSON.
-     * @throws FileNotFoundException Если необходимый файл не найден.
+     * Конструктор для создания новой команды с указанным именем и описанием.
+     *
+     * @param name имя команды
+     * @param description краткое описание действия команды
      */
-    public void execute(String... args) throws JsonProcessingException, FileNotFoundException;
+    public Command(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public abstract void execute(String... args);
+    /**
+     * Получает имя команды.
+     *
+     * @return имя команды
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * Устанавливает новое имя для команды.
+     *
+     * @param name новое имя команды
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    /**
+     * Получает описание команды.
+     *
+     * @return описание команды
+     */
+    public String getDescription() {
+        return description;
+    }
+    /**
+     * Устанавливает новое описание для команды.
+     *
+     * @param description новое описание команды
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

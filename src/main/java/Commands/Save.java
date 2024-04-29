@@ -12,7 +12,7 @@ import java.util.TreeSet;
 /**
  * Команда для сохранения коллекции лабораторных работ в XML-формате в файл.
  */
-public class Save extends AbstractCommand {
+public class Save extends Command {
     private final TreeSet<LabWork> treeSet;
     private final String path;
     private final XmlMapper mapper = new XmlMapper();
@@ -29,14 +29,18 @@ public class Save extends AbstractCommand {
     }
     /**
      * Сохраняет коллекцию в XML-формате в файл по заданному пути.
-     * @throws JsonProcessingException Если происходит ошибка при сериализации объектов.
      */
-    public void save() throws JsonProcessingException {
+    public void save() {
         Date now = new Date();
         try (PrintWriter printWriter = new PrintWriter(path)) {
             for (LabWork labWork: treeSet) {
                 labWork.setLastSaveTime(now);
-                String xml = mapper.writeValueAsString(labWork);
+                String xml = null;
+                try {
+                    xml = mapper.writeValueAsString(labWork);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
                 printWriter.println(xml);
             }
         } catch (FileNotFoundException e) {
@@ -46,10 +50,9 @@ public class Save extends AbstractCommand {
     /**
      * Выполняет команду сохранения коллекции в файл.
      * @param args Аргументы команды (не используются).
-     * @throws JsonProcessingException Если в процессе выполнения команды происходят ошибки сериализации данных.
      */
     @Override
-    public void execute(String... args) throws JsonProcessingException {
+    public void execute(String... args) {
         save();
     }
 }

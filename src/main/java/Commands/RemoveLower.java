@@ -2,7 +2,7 @@ package Commands;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.LabWork;
-import utility.Parser;
+import utility.Builder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import utility.ScannerManager;
 /**
  * Команда для удаления из коллекции всех элементов, которые меньше заданного элемента.
  */
-public class RemoveLower extends AbstractCommand {
+public class RemoveLower extends Command {
     private final TreeSet<LabWork> treeSet;
     private final ScannerManager scannerManager;
     /**
@@ -43,11 +43,10 @@ public class RemoveLower extends AbstractCommand {
     /**
      * Выполняет команду удаления всех элементов коллекции, меньших заданного элемента.
      * @param args Аргументы команды (не используются).
-     * @throws JsonProcessingException Если происходит ошибка обработки данных при парсинге элемента.
      */
     @Override
-    public void execute(String... args) throws JsonProcessingException {
-        LabWork labWork = new Parser(scannerManager).parseLabWork();
+    public void execute(String... args) {
+        LabWork labWork = new Builder(scannerManager).parseLabWork();
         removeLower(labWork);
     }
 }

@@ -1,7 +1,7 @@
 package Commands;
 
 import model.LabWork;
-import utility.Parser;
+import utility.Builder;
 
 import java.util.Objects;
 import java.util.TreeSet;
@@ -9,7 +9,7 @@ import utility.ScannerManager;
 /**
  * Команда для обновления элемента коллекции по его ID.
  */
-public class Update extends AbstractCommand {
+public class Update extends Command {
     private final ScannerManager scannerManager;
     private final TreeSet<LabWork> treeSet;
     /**
@@ -45,7 +45,7 @@ public class Update extends AbstractCommand {
     @Override
     public void execute(String... args) {
         int id = Integer.parseInt(args[0]);
-        LabWork element = new Parser(scannerManager).parseLabWork();
+        LabWork element = new Builder(scannerManager).parseLabWork();
         update(id, element);
     }
 }

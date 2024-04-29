@@ -8,7 +8,7 @@ import java.util.TreeSet;
 /**
  * Команда для вывода элементов коллекции в порядке убывания.
  */
-public class PrintDescending extends AbstractCommand {
+public class PrintDescending extends Command {
     private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса PrintDescending.
@@ -39,10 +39,9 @@ public class PrintDescending extends AbstractCommand {
     /**
      * Выполняет команду вывода всех элементов коллекции в порядке убывания.
      * @param args Аргументы команды (не используются в этой команде).
-     * @throws JsonProcessingException Если происходит ошибка обработки JSON в процессе выполнения команды.
      */
     @Override
-    public void execute(String... args) throws JsonProcessingException {
+    public void execute(String... args) {
         printDescending();
     }
 }

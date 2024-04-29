@@ -3,14 +3,14 @@ package Commands;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Difficulty;
 import model.LabWork;
-import utility.Parser;
+import utility.Builder;
 
 import utility.ScannerManager;
 import java.util.TreeSet;
 /**
  * Команда для удаления из коллекции одного элемента с заданной сложностью.
  */
-public class RemoveAnyByDifficulty extends AbstractCommand {
+public class RemoveAnyByDifficulty extends Command {
     private final TreeSet<LabWork> treeSet;
     ScannerManager scannerManager;
     /**
@@ -41,11 +41,10 @@ public class RemoveAnyByDifficulty extends AbstractCommand {
     /**
      * Выполняет команду удаления элемента по сложности.
      * @param args Аргументы команды (не используются).
-     * @throws JsonProcessingException Если в процессе выполнения команды произойдет ошибка обработки JSON.
      */
     @Override
-    public void execute(String... args) throws JsonProcessingException {
-        Difficulty difficulty = new Parser(scannerManager).parseDifficulty();
+    public void execute(String... args) {
+        Difficulty difficulty = new Builder(scannerManager).parseDifficulty();
         removeAnyByDifficulty(difficulty);
     }
 }

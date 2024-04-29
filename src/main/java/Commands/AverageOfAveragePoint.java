@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * Команда для вычисления среднего значения средних оценок всех лабораторных работ в коллекции.
  */
-public class AverageOfAveragePoint extends AbstractCommand {
+public class AverageOfAveragePoint extends Command {
     private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса AverageOfAveragePoint.
@@ -30,10 +30,9 @@ public class AverageOfAveragePoint extends AbstractCommand {
     /**
      * Выполняет команду вычисления среднего значения средних оценок.
      * @param args Аргументы команды (не используются).
-     * @throws JsonProcessingException Если происходит ошибка обработки данных.
      */
     @Override
-    public void execute(String... args) throws JsonProcessingException {
+    public void execute(String... args) {
         averageOfAveragePoint();
     }
 }

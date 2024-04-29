@@ -5,7 +5,7 @@ import java.util.TreeSet;
 /**
  * Команда для очистки всех лабораторных работ из коллекции.
  */
-public class Clear extends AbstractCommand {
+public class Clear extends Command {
     private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса Clear.

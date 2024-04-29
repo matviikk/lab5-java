@@ -2,14 +2,13 @@ package Commands;
 
 import model.LabWork;
 
-import java.util.Scanner;
 import java.util.TreeSet;
-import utility.Parser;
+import utility.Builder;
 import utility.ScannerManager;
 /**
  * Команда для добавления новой лабораторной работы в коллекцию.
  */
-public class Add extends AbstractCommand {
+public class Add extends Command {
     private final ScannerManager scannerManager; // Менеджер для обработки ввода пользователя
     private final TreeSet<LabWork> treeSet; // Коллекция для хранения лабораторных работ
     /**
@@ -35,7 +34,7 @@ public class Add extends AbstractCommand {
      */
     @Override
     public void execute(String... args) {
-        LabWork labWork = new Parser(scannerManager).parseLabWork();
+        LabWork labWork = new Builder(scannerManager).parseLabWork();
         add(labWork);
     }
 }

@@ -4,11 +4,11 @@ import model.LabWork;
 
 import java.util.Objects;
 import java.util.TreeSet;
-import utility.ScannerManager;
+
 /**
  * Команда для удаления элемента из коллекции по его идентификатору (ID).
  */
-public class RemoveById extends AbstractCommand {
+public class RemoveById extends Command {
     private final TreeSet<LabWork> treeSet;
     /**
      * Конструктор класса RemoveById.
