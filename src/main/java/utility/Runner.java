@@ -10,23 +10,23 @@ import java.util.TreeSet;
 
 public class Runner {
     /**
-     * Набор всех лабораторных работ, упорядоченных по их уникальным идентификаторам.
+     * РќР°Р±РѕСЂ РІСЃРµС… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂР°Р±РѕС‚, СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅС‹С… РїРѕ РёС… СѓРЅРёРєР°Р»СЊРЅС‹Рј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°Рј.
      */
     private final TreeSet<LabWork> treeSet;
     /**
-     * История введенных команд.
+     * РСЃС‚РѕСЂРёСЏ РІРІРµРґРµРЅРЅС‹С… РєРѕРјР°РЅРґ.
      */
     private final Deque<String> history = new ArrayDeque<>();
     /**
-     * Менеджер для обработки ввода от пользователя.
+     * РњРµРЅРµРґР¶РµСЂ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РІРІРѕРґР° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
      */
     private final ScannerManager scannerManager;
     /**
-     * Флаг, указывающий на то, продолжается ли выполнение программы.
+     * Р¤Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№ РЅР° С‚Рѕ, РїСЂРѕРґРѕР»Р¶Р°РµС‚СЃСЏ Р»Рё РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹.
      */
     private boolean isRunning = true;
     /**
-     * Менеджер команд, отвечающий за исполнение доступных команд.
+     * РњРµРЅРµРґР¶РµСЂ РєРѕРјР°РЅРґ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° РёСЃРїРѕР»РЅРµРЅРёРµ РґРѕСЃС‚СѓРїРЅС‹С… РєРѕРјР°РЅРґ.
      */
     private final CommandManager commandManager;
     private final String path;
@@ -40,32 +40,29 @@ public class Runner {
 
     public void run(){
         if (!scannerManager.isReadingFile) {
-            System.out.println("Введите \"help\" для справки по командам.");
+            System.out.println("Р’РІРµРґРёС‚Рµ \"help\" РґР»СЏ СЃРїСЂР°РІРєРё РїРѕ РєРѕРјР°РЅРґР°Рј.");
         }
         while (isRunning) {
             System.out.print("$ ");
             try {
                 if (!scannerManager.hasNextLine()) {
-                    saveAndExit(); // Здесь вызываем сохранение и выход при EOF (Ctrl+D)
-                }
-                String string = scannerManager.nextLine();
-                if (string.equals("^C") || string.equals("^Z")){
                     saveAndExit();
                 }
+                String string = scannerManager.nextLine();
                 history.addFirst(string);
                 if (history.size() > 9) {
                     history.removeLast();
                 }
                 commandManager.executeCommand(string);
             } catch (Exception e) {
-                System.out.println("\u001B[31mError: Ошибка ввода. \u001B[0m");
-                System.out.println("\u001B[31mError: Экстренное завершение программы... \u001B[0m");
+                System.out.println("\u001B[31mError: РћС€РёР±РєР° РІРІРѕРґР°. \u001B[0m");
+                System.out.println("\u001B[31mError: Р­РєСЃС‚СЂРµРЅРЅРѕРµ Р·Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹... \u001B[0m");
                 return;
             }
         }
     }
     /**
-     * Выполняет сохранение и выход из программы, при вызове исключения.
+     * Р’С‹РїРѕР»РЅСЏРµС‚ СЃРѕС…СЂР°РЅРµРЅРёРµ Рё РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹, РїСЂРё РІС‹Р·РѕРІРµ РёСЃРєР»СЋС‡РµРЅРёСЏ.
      */
     public void saveAndExit() {
         new Save(treeSet, path).save();

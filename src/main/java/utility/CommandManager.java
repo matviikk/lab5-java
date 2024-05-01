@@ -57,7 +57,6 @@ public class CommandManager {
         } catch (NoSuchElementException e) {
             System.out.println("Нет входных данных для команды :(");
         } catch (Exception e) {
-            System.out.println(e);
             System.out.println("Произошла ошибка при выполнении команды...");
         }
     }

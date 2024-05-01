@@ -68,7 +68,7 @@ public class Builder {
                 }
                 return minimalPoint;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение минимальной оценки не может быть больше 1.7*10^308. \u001B[0m");
             }
         }
     }
@@ -84,7 +84,7 @@ public class Builder {
                 }
                 return averagePoint;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение средней оценки не может быть больше 2147483647. \u001B[0m");
             }
         }
     }
@@ -150,7 +150,7 @@ public class Builder {
                 }
                 return height;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение роста не может быть больше 2147483647. \u001B[0m");
             }
         }
     }
@@ -181,7 +181,7 @@ public class Builder {
                 Double x = Double.parseDouble(s);
                 return x;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение координаты X не может быть больше 1.7*10^308. \u001B[0m");
             }
         }
     }
@@ -197,7 +197,7 @@ public class Builder {
                 long y = Long.parseLong(s);
                 return y;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение координаты Y не может быть больше 9223372036854775807. \u001B[0m");
             }
         }
     }
@@ -213,7 +213,7 @@ public class Builder {
                 double z = Double.parseDouble(s);
                 return z;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение координаты Z не может быть больше 1.7*10^308. \u001B[0m");
             }
         }
     }
@@ -258,7 +258,7 @@ public class Builder {
                 Double x = Double.parseDouble(s);
                 return x;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение координаты X не может быть больше 1.7*10^308. \u001B[0m");
             }
         }
     }
@@ -278,7 +278,7 @@ public class Builder {
                 }
                 return y;
             } catch (Exception e) {
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Неверный формат данных. Значение координаты Y не может быть больше 1.7*10^308. \u001B[0m");
             }
         }
     }
@@ -302,7 +302,7 @@ public class Builder {
             if (!scannerManager.isReadingFile()) System.out.print("] ");
             difficulty = Difficulty.findByValue(scannerManager.nextLine().trim());
             if (difficulty == null){
-                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Такой сложности нету \u001B[0m");
+                if (!scannerManager.isReadingFile()) System.out.println("\u001B[31mError: Такой сложности не существует. \u001B[0m");
             }
         } while (difficulty == null);
         return difficulty;
