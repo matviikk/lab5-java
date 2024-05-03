@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.bytebuddy.asm.Advice;
 
 import java.io.Serializable;
@@ -15,20 +16,23 @@ import java.util.Date;
  */
 public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     private static Integer generatedId = 1;
+    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
-    @Override
-    public String toString() {
-        return "LabWork{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates +
-                ", creationDate=" + creationDate +
-                ", minimalPoint=" + minimalPoint +
-                ", averagePoint=" + averagePoint +
-                ", difficulty=" + difficulty +
-                ", author=" + author +
-                '}';
-    }
+    private String name; //Поле не может быть null, Строка не может быть пустой
+
+    private Coordinates coordinates; //Поле не может быть null
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+
+    private Double minimalPoint; //Поле может быть null, Значение поля должно быть больше 0
+
+    private int averagePoint; //Значение поля должно быть больше 0
+
+    private Difficulty difficulty; //Поле может быть null
+
+    private Person author; //Поле может быть null
+
     /**
      * Конструктор по умолчанию, инициализирует объект с параметрами по умолчанию.
      */
@@ -53,25 +57,6 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
         this.difficulty = difficulty;
         this.author = author;
     }
-
-
-    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-
-    private String name; //Поле не может быть null, Строка не может быть пустой
-
-    private Coordinates coordinates; //Поле не может быть null
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-
-    private Double minimalPoint; //Поле может быть null, Значение поля должно быть больше 0
-
-    private int averagePoint; //Значение поля должно быть больше 0
-
-    private Difficulty difficulty; //Поле может быть null
-
-    private Person author; //Поле может быть null
-    private Date lastSaveTime;
 
     // Геттеры и сеттеры для каждого поля класса
 
@@ -146,13 +131,20 @@ public class LabWork implements Comparable<LabWork>, Serializable, Validatable {
     public void setAuthor(Person author) {
         this.author = author;
     }
-    public Date getLastSaveTime() {
-        return lastSaveTime;
-    }
-    public void setLastSaveTime(Date lastSaveTime) {
-        this.lastSaveTime = lastSaveTime;
-    }
 
+    @Override
+    public String toString() {
+        return "LabWork{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", minimalPoint=" + minimalPoint +
+                ", averagePoint=" + averagePoint +
+                ", difficulty=" + difficulty +
+                ", author=" + author +
+                '}';
+    }
     /**
      * Метод сравнения для упорядочивания лабораторных работ по средней оценке.
      */

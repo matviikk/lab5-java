@@ -10,7 +10,7 @@ import java.util.*;
  * Хранит множество лабораторных работ и обеспечивает управление ими через консоль.
  */
 public class CommandManager {
-    private Map<String, Command> map = new HashMap<String, Command>();
+    private final Map<String, Command> map = new HashMap<String, Command>();
     private Runner runner;
     /**
      * Конструктор инициализирует CommandManager с заданным набором работ, сканером и путем для сохранения.
@@ -21,14 +21,15 @@ public class CommandManager {
      */
     public CommandManager(TreeSet<LabWork> treeSet, ScannerManager scannerManager, String path, Runner runner) {
         // инициализация команд с их соответствующими обработчиками
+        Save saveInstance = new Save(treeSet, path);
         map.put("help", new Help(this));
-        map.put("info", new Info(treeSet));
+        map.put("info", new Info(treeSet, saveInstance));
         map.put("show", new Show(treeSet));
         map.put("add", new Add(scannerManager, treeSet));
         map.put("update", new Update(scannerManager, treeSet));
         map.put("remove_by_id", new RemoveById(treeSet));
         map.put("clear", new Clear(treeSet));
-        map.put("save", new Save(treeSet, path));
+        map.put("save", saveInstance);
         map.put("exit", new Exit(runner));
         map.put("remove_greater", new RemoveGreater(scannerManager, treeSet));
         map.put("remove_lower", new RemoveLower(scannerManager, treeSet));

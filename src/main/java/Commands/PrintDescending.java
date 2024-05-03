@@ -1,6 +1,5 @@
 package Commands;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import model.LabWork;
 
 import java.util.Iterator;

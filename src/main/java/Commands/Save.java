@@ -16,6 +16,7 @@ public class Save extends Command {
     private final TreeSet<LabWork> treeSet;
     private final String path;
     private final XmlMapper mapper = new XmlMapper();
+    private Date lastSaveTime = null;
     /**
      * Конструктор класса Save.
      * @param treeSet Коллекция лабораторных работ для сохранения.
@@ -31,10 +32,9 @@ public class Save extends Command {
      * Сохраняет коллекцию в XML-формате в файл по заданному пути.
      */
     public void save() {
-        Date now = new Date();
         try (PrintWriter printWriter = new PrintWriter(path)) {
+            setLastSaveTime();
             for (LabWork labWork: treeSet) {
-                labWork.setLastSaveTime(now);
                 String xml = null;
                 try {
                     xml = mapper.writeValueAsString(labWork);
@@ -46,6 +46,18 @@ public class Save extends Command {
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Файл не найден: " + path, e);
         }
+    }
+    /**
+     * Возвращает время последнего сохранения.
+     */
+    public Date getLastSaveTime() {
+        return lastSaveTime;
+    }
+    /**
+     * Выполняет присваивание новой даты сохранения.
+     */
+    public void setLastSaveTime() {
+        this.lastSaveTime = new Date();
     }
     /**
      * Выполняет команду сохранения коллекции в файл.

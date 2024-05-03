@@ -1,7 +1,5 @@
 package Commands;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
@@ -29,6 +27,7 @@ public class ExecuteScript extends Command {
     /**
      * Выполняет команды, перечисленные в файле скрипта.
      * @param args Массив аргументов, первым из которых должен быть путь к файлу скрипта.
+     * Предотвращает бесконечную рекурсию и выкидывает RuntimeException, если она найдена.
      */
     @Override
     public void execute(String... args) {

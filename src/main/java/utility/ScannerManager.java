@@ -21,13 +21,6 @@ public class ScannerManager {
             return scanner.nextLine();
         }
     }
-//    public String nextLine() {
-//        if (!scanner.hasNextLine()) {
-//            Main.saveAndExit();  // Вызов метода сохранения данных и завершения программы
-//            return null; // Возврат null после завершения программы
-//        }
-//        return scanner.nextLine();
-//    }
     /**
      * Проверяет, есть ли следующая строка для чтения в текущем источнике ввода.
      * @return true, если следующая строка доступна, иначе false.

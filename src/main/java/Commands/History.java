@@ -1,13 +1,11 @@
 package Commands;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import utility.Runner;
-
 /**
  * Команда для вывода истории последних выполненных команд.
  */
 public class History extends Command {
-    private Runner runner;
+    private final Runner runner;
     public History(Runner runner) {
         super("history", "вывести последние 9 команд (без их аргументов)");
         this.runner = runner;

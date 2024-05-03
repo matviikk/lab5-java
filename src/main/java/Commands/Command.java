@@ -1,52 +1,57 @@
 package Commands;
 /**
- * Command предоставляет базовую реализацию для интерфейса {@link Command},
- * инкапсулируя общие свойства, такие как имя и описание.
- * Этот класс служит основой для всех команд в системе.
+ * {@code Command} предоставляет абстрактную основу для всех команд в системе,
+ * инкапсулируя общие свойства такие как имя и описание команды. Классы, наследующие
+ * {@code Command}, должны реализовать метод {@link #execute(String...)} для
+ * выполнения конкретных действий команды.
  */
 public abstract class Command {
     private String name;
     private String description;
     /**
-     * Конструктор для создания новой команды с указанным именем и описанием.
+     * Конструктор для создания команды с указанным именем и описанием.
      *
-     * @param name имя команды
-     * @param description краткое описание действия команды
+     * @param name Имя команды. Не может быть {@code null}.
+     * @param description Описание команды, объясняющее её функциональность. Не может быть {@code null}.
      */
     public Command(String name, String description) {
         this.name = name;
         this.description = description;
     }
-
+    /**
+     * Выполняет команду с использованием указанных аргументов.
+     *
+     * @param args Аргументы, необходимые для выполнения команды.
+     */
     public abstract void execute(String... args);
     /**
-     * Получает имя команды.
+     * Возвращает имя команды.
      *
-     * @return имя команды
+     * @return Имя команды.
      */
     public String getName() {
         return name;
     }
     /**
-     * Устанавливает новое имя для команды.
+     * Устанавливает новое имя команды.
      *
-     * @param name новое имя команды
+     * @param name Новое имя команды.
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     * Получает описание команды.
+     * Возвращает описание команды.
      *
-     * @return описание команды
+     * @return Описание команды.
      */
     public String getDescription() {
         return description;
     }
     /**
-     * Устанавливает новое описание для команды.
+     * Устанавливает новое описание команды.
      *
-     * @param description новое описание команды
+     * @param description Новое описание команды.
      */
     public void setDescription(String description) {
         this.description = description;

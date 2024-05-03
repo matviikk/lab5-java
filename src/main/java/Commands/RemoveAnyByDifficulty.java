@@ -1,6 +1,5 @@
 package Commands;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Difficulty;
 import model.LabWork;
 import utility.Builder;

@@ -1,6 +1,5 @@
 package Commands;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import model.LabWork;
 import utility.Builder;
 
@@ -8,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 import utility.ScannerManager;
-
 /**
  * Команда для удаления из коллекции всех элементов, которые меньше заданного элемента.
  */
