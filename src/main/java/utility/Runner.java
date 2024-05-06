@@ -49,7 +49,7 @@ public class Runner {
                     saveAndExit();
                 }
                 String string = scannerManager.nextLine();
-                history.addFirst(string);
+                history.addFirst(string.split(" ")[0]);
                 if (history.size() > 9) {
                     history.removeLast();
                 }
