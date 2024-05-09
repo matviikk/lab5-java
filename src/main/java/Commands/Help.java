@@ -21,7 +21,6 @@ public class Help extends Command {
         System.out.println("Available commands:");
         System.out.println("-------------------");
         for (Map.Entry<String, Command> entry : commandManager.getCommands().entrySet()) {
-            // использование String.format для улучшения форматирования вывода
             String output = String.format("%-35s : %s", entry.getValue().getName(), entry.getValue().getDescription());
             System.out.println(output);
         }
